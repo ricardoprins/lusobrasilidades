@@ -4,15 +4,15 @@ from database import Base
 class Portugal(Base):
     __tablename__ = "portugal"
     
-    id = Column(Integer, primary_key=True, index=True)
-    distrito = Column(String, index=True)
-    municipio = Column(String, index=True)
-    freguesia = Column(String, index=True)
+    index_label = Column(Integer, primary_key=True, index=True)
+    distrito = Column(String)
+    municipio = Column(String)
+    freguesia = Column(String)
     
 class Brasil(Base):
     __tablename__ = "brasil"
     
-    id = Column(Integer, primary_key=True, index=True)
+    index_label = Column(Integer, primary_key=True, index=True)
     estado = Column(String, index=True)
     municipio = Column(String, index=True)
     

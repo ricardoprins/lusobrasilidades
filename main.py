@@ -1,20 +1,12 @@
-import models
-
-from fastapi import FastAPI, Request
+import models, schemas, crud
+from fastapi import FastAPI, Request, Depends
 from fastapi.templating import Jinja2Templates
 from database import SessionLocal, engine
 from sqlalchemy.orm import Session
-from typing import Optional
-from pydantic import BaseModel
-from models import Portugal, Brasil
-
 
 app = FastAPI()
 templates = Jinja2Templates(directory='templates')
 models.Base.metadata.create_all(bind=engine)
-
-class LocalitySearch(BaseModel):
-    locality_name: str
 
 def get_db():
     try:
@@ -36,21 +28,23 @@ def brasil(request: Request):
     })
 
 @app.get("/portugal")
-def brasil(request: Request):
+def portugal(request: Request, distrito=None, municipio=None, freguesia=None, db:Session = Depends(get_db)):
+    
+    crud.get_local_portugal(db)
+    
+    if distrito:
+        crud.get_portugal_distrito(db, distrito)
+    
+    if municipio:
+        crud.get_portugal_municipio(db, municipio)
+    
+    if freguesia:
+        crud.get_portugal_freguesia(db, freguesia)
+    
     return templates.TemplateResponse('portugal.html', {
-        'request': request
+        'request': request,
+        'places': places,
+        'distrito': distrito,
+        'municipio': municipio,
+        'freguesia': freguesia
     })
-
-@app.post("/filter")
-def filter(locality_search: LocalitySearch):
-    """
-    To be added later, I am tired today.
-    This will filter localities' data and mess with the tables.
-    """
-    pass
-
-""" def fetch_locality_data(id: int):
-    db = SessionLocal()
-    loc = db.query(Locality).filter(Locality.id == id).first()
-"""
-
