@@ -27,9 +27,21 @@ def home(request: Request):
     })
 
 @app.get("/brasil")
-def brasil(request: Request):
+def brasil(request: Request, estado=None, municipio=None, db:Session = Depends(get_db)):
+    
+    places = crud.get_local_brasil(db)
+    
+    if estado:
+        places = crud.get_brasil_estado(db, estado)
+        
+    if municipio:
+        places = crud.get_brasil_municipio(db, municipio)
+        
     return templates.TemplateResponse('brasil.html', {
-        'request': request
+        'request': request,
+        'places': places,
+        'estado': estado,
+        'municipio': municipio
     })
 
 @app.get("/portugal")
