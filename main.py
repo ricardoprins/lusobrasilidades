@@ -5,7 +5,11 @@ from database import SessionLocal, engine
 from sqlalchemy.orm import Session
 from models import Portugal
 
-app = FastAPI()
+app = FastAPI(
+    title='Lusobrasilidades',
+    description='Este projeto visa fornecer informações sobre localidades no Brasil e em Portugal, com dados históricos relevantes',
+    version='1.0'
+)
 templates = Jinja2Templates(directory='templates')
 models.Base.metadata.create_all(bind=engine)
 
@@ -31,18 +35,16 @@ def brasil(request: Request):
 @app.get("/portugal")
 def portugal(request: Request, distrito=None, municipio=None, freguesia=None, db:Session = Depends(get_db)):
     
-    places = db.query(Portugal.index_label).all()
+    places = crud.get_local_portugal(db)
     
     if distrito:
-        crud.get_portugal_distrito(db, distrito)
+        places = crud.get_portugal_distrito(db, distrito)
     
     if municipio:
-        crud.get_portugal_municipio(db, municipio)
+        places = crud.get_portugal_municipio(db, municipio)
     
     if freguesia:
-        crud.get_portugal_freguesia(db, freguesia)
-    
-    crud.get_local_portugal(db)
+        places = crud.get_portugal_freguesia(db, freguesia)
     
     return templates.TemplateResponse('portugal.html', {
         'request': request,

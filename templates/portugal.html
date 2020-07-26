@@ -12,18 +12,27 @@
             Portugal
         </a>
     </div>
+    <div class="ui divider"></div>
+    <p> Os nomes de localidades abaixo correspondem aos nomes atuais, conforme a Reforma Administrativa de 2011. Posteriormente serão adicionadas informações históricas de nomes anteriores para cada localidade.<br><br> Caso você tenha interesse em contribuir com este projeto, envie-me um email: ricardo@iamprins.com</p>
+    <div class="ui divider"></div>
+    
+    <form method="get">
+        <h2>Filtrar</h2>
+        <div class="ui input">
+            <input name="distrito" type="text" placeholder="Distrito" value="{{ distrito or ''}}">
+        </div>
 
-    <div id="distrito" class="ui input">
-        <input type="text" placeholder="Distrito">
-    </div>
+        <div class="ui input">
+            <input name="municipio" type="text" placeholder="Município" value={{ municipio or '' }}>
+        </div>
 
-    <div id="municipio" class="ui input">
-        <input type="text" placeholder="Município">
-    </div>
+        <div class="ui input">
+            <input name="freguesia" type="text" placeholder="Freguesia" value={{ freguesia or '' }}>
+        </div>
+        <button type="submit" class="ui button primary">Filtrar</button>
+    </form>
+    <a href="/portugal"><button class="ui button">Limpar filtro</button></a>
 
-    <div id="freguesia" class="ui input">
-        <input type="text" placeholder="Freguesia">
-    </div>
 
     <div class="ui divider"></div>
 
@@ -46,6 +55,8 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>  
+    </div>
+    
+    <div class="ui divider"></div>  
 
 {% endblock %}
