@@ -3,6 +3,7 @@ from fastapi import FastAPI, Request, Depends
 from fastapi.templating import Jinja2Templates
 from database import SessionLocal, engine
 from sqlalchemy.orm import Session
+from models import Portugal
 
 app = FastAPI()
 templates = Jinja2Templates(directory='templates')
@@ -30,7 +31,7 @@ def brasil(request: Request):
 @app.get("/portugal")
 def portugal(request: Request, distrito=None, municipio=None, freguesia=None, db:Session = Depends(get_db)):
     
-    crud.get_local_portugal(db)
+    places = db.query(Portugal.index_label).all()
     
     if distrito:
         crud.get_portugal_distrito(db, distrito)
@@ -40,6 +41,8 @@ def portugal(request: Request, distrito=None, municipio=None, freguesia=None, db
     
     if freguesia:
         crud.get_portugal_freguesia(db, freguesia)
+    
+    crud.get_local_portugal(db)
     
     return templates.TemplateResponse('portugal.html', {
         'request': request,
