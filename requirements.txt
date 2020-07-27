@@ -3,3 +3,5 @@ fastapi
 jinja2
 uvicorn
 gunicorn
+async-generator
+async-exit-stack
