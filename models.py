@@ -5,15 +5,15 @@ class Portugal(Base):
     __tablename__ = "portugal"
     
     index_label = Column(Integer, primary_key=True, index=True)
-    distrito = Column(String, index=True)
-    municipio = Column(String, index=True)
-    freguesia = Column(String, index=True)
+    distrito = Column(String(collation='utf8_general_ci'), index=True)
+    municipio = Column(String(collation='utf8_general_ci'), index=True)
+    freguesia = Column(String(collation='utf8_general_ci'), index=True)
     
 class Brasil(Base):
     __tablename__ = "brasil"
     
     index_label = Column(Integer, primary_key=True, index=True)
-    estado = Column(String, index=True)
-    municipio = Column(String, index=True)
+    estado = Column(String(collation='utf8_general_ci'), index=True)
+    municipio = Column(String(collation='utf8_general_ci'), index=True)
     
     
