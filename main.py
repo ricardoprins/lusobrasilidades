@@ -1,9 +1,8 @@
-import models, schemas, crud
+import models, crud
 from fastapi import FastAPI, Request, Depends
 from fastapi.templating import Jinja2Templates
 from database import SessionLocal, engine
 from sqlalchemy.orm import Session
-from models import Portugal
 
 app = FastAPI(
     title='Lusobrasilidades',
