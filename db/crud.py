@@ -9,9 +9,8 @@ def get_local_portugal(db: Session):
     return db.query(models.Portugal)
 
 def get_portugal_distrito(db: Session, distrito: str):
-    return db.query(models.Portugal).filter(
-        unaccent(models.Portugal.distrito).ilike(distrito), 
-        unaccent(models.Portugal.distrito).contains(distrito))
+    contains = '%{}%'.format(distrito)
+    return db.query(models.Portugal).filter(unaccent(models.Portugal.distrito).ilike(contains))
 
 def get_portugal_municipio(db: Session, municipio: str):
     return db.query(models.Portugal).filter(unaccent(models.Portugal.municipio).ilike(municipio))
