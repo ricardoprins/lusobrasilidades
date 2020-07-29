@@ -1,7 +1,7 @@
-import models, crud
+from db import models, crud
 from fastapi import FastAPI, Request, Depends
 from fastapi.templating import Jinja2Templates
-from database import SessionLocal, engine
+from db.database import SessionLocal, engine
 from sqlalchemy.orm import Session
 
 app = FastAPI(

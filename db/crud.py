@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-import models
+from . import models
 
 def get_local_portugal(db: Session):
     return db.query(models.Portugal)
