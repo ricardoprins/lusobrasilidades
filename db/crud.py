@@ -6,7 +6,7 @@ class unaccent(ReturnTypeFromArgs):
     pass
 
 def get_local_portugal(db: Session):
-    return db.query(unaccent(models.Portugal))
+    return db.query(models.Portugal)
 
 def get_portugal_distrito(db: Session, distrito: str):
     return db.query(models.Portugal).filter(unaccent(models.Portugal.distrito).ilike(distrito))
