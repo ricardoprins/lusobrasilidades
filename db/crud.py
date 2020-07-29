@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy.orm.attributes import QueryableAttribute
 from sqlalchemy.sql.functions import ReturnTypeFromArgs
 from . import models
 
@@ -9,7 +10,9 @@ def get_local_portugal(db: Session):
     return db.query(models.Portugal)
 
 def get_portugal_distrito(db: Session, distrito: str):
-    return db.query(models.Portugal).filter(unaccent(models.Portugal.distrito).ilike(distrito))
+    return db.query(models.Portugal).filter(
+        unaccent(models.Portugal.distrito).ilike(distrito), 
+        unaccent(models.Portugal.distrito).QueryableAttribute.contains(distrito))
 
 def get_portugal_municipio(db: Session, municipio: str):
     return db.query(models.Portugal).filter(unaccent(models.Portugal.municipio).ilike(municipio))
