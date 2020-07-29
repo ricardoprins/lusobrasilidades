@@ -28,7 +28,7 @@ def home(request: Request):
 @app.get("/brasil")
 def brasil(request: Request, estado=None, municipio=None, db:Session = Depends(get_db)):
     
-    places = crud.get_local_brasil(db)
+    places = crud.get_local_brasil(db).all()
     
     if estado:
         places = crud.get_brasil_estado(db, estado)
@@ -46,7 +46,7 @@ def brasil(request: Request, estado=None, municipio=None, db:Session = Depends(g
 @app.get("/portugal")
 def portugal(request: Request, distrito=None, municipio=None, freguesia=None, db:Session = Depends(get_db)):
     
-    places = crud.get_local_portugal(db)
+    places = crud.get_local_portugal(db).all()
     
     if distrito:
         places = crud.get_portugal_distrito(db, distrito)
