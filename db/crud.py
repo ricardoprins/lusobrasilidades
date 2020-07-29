@@ -13,16 +13,20 @@ def get_portugal_distrito(db: Session, distrito: str):
     return db.query(models.Portugal).filter(unaccent(models.Portugal.distrito).ilike(contains))
 
 def get_portugal_municipio(db: Session, municipio: str):
-    return db.query(models.Portugal).filter(unaccent(models.Portugal.municipio).ilike(municipio))
+    contains = '%{}%'.format(municipio)
+    return db.query(models.Portugal).filter(unaccent(models.Portugal.municipio).ilike(contains))
 
 def get_portugal_freguesia(db: Session, freguesia: str):
-    return db.query(models.Portugal).filter(unaccent(models.Portugal.freguesia).ilike(freguesia))
+    contains = '%{}%'.format(freguesia)
+    return db.query(models.Portugal).filter(unaccent(models.Portugal.freguesia).ilike(contains))
 
 def get_local_brasil(db: Session):
     return db.query(models.Brasil)
 
 def get_brasil_estado(db: Session, estado: str):
-    return db.query(models.Brasil).filter(unaccent(models.Brasil.estado).ilike(estado))
+    contains = '%{}%'.format(estado)
+    return db.query(models.Brasil).filter(unaccent(models.Brasil.estado).ilike(contains))
 
 def get_brasil_municipio(db: Session, municipio: str):
-    return db.query(models.Brasil).filter(unaccent(models.Brasil.municipio).ilike(municipio))
+    contains = '%{}%'.format(municipio)
+    return db.query(models.Brasil).filter(unaccent(models.Brasil.municipio).ilike(contains))
