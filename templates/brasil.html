@@ -1,39 +1,31 @@
 {% extends "layout.html"%}
 
 {% block content %}
-     <div class="ui inverted menu">
-        <a class="item" href="/">
-            Início
-        </a>
-        <a class=" active item" href="/brasil">
-            Brasil
-        </a>
-        <a class="item" href="/portugal">
-            Portugal
-        </a>       
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <form method="get">
+                <div class="ui input">
+                    <input name="estado" type="text" placeholder="Estado" value="{{ estado or ''}}">
+                    <input name="municipio" type="text" placeholder="Município" value={{ municipio or '' }}>
+                </div>
+                <button type="submit" class="ui button primary">Filtrar</button>
+                <a href="/brasil"><button class="ui button">Limpar filtro</button></a>
+            </form>
+            <ol>
+                <li><a href="/">Início</a></li>
+                <li>Brasil</li>
+            </ol>
+        </div>
     </div>
+</section>
+<!-- End Breadcrumbs Section -->
 
-        <div class="ui divider"></div>
-    <p> Os nomes de localidades abaixo correspondem aos nomes atuais. Posteriormente serão adicionadas informações históricas de nomes anteriores para cada localidade.<br><br> Caso você tenha interesse em contribuir com este projeto, envie-me um email: ricardo@iamprins.com</p>
-    <div class="ui divider"></div>
-    
-    <form method="get">
-        <h2>Filtrar</h2>
-        <div class="ui input">
-            <input name="estado" type="text" placeholder="Estado" value="{{ estado or ''}}">
-        </div>
-
-        <div class="ui input">
-            <input name="municipio" type="text" placeholder="Município" value={{ municipio or '' }}>
-        </div>
-        <button type="submit" class="ui button primary">Filtrar</button>
-    </form>
-    <a href="/brasil"><button class="ui button">Limpar filtro</button></a>
-
-    <div class="ui divider"></div>
-
+<section class="inner-page">
+    <div class="section-title"><h2>Brasil</h2></div>
     <div class="ui container">
-    <table class="ui celled table">
+        <table class="ui celled table">
             <thead>
                 <tr>
                     <th>Estado</th>
@@ -50,5 +42,11 @@
             </tbody>
         </table>
     </div>
-    <div class="ui divider"></div>
+</section>
+
 {% endblock %}
+
+<!--    
+
+
+-->

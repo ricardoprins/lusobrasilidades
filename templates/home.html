@@ -1,25 +1,110 @@
-{% extends "layout.html"%}
-
+{% extends "layout.html"%} 
 {% block content %}
-    <div class="ui inverted menu">
-        <a class="active item" href="/">
-            Início
-        </a>
-        <a class="item" href="/brasil">
-            Brasil
-        </a>
-        <a class="item" href="/portugal">
-            Portugal
-        </a>
+
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Bem-vindo ao Lusobrasilidades!</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Em busca de agregar informações históricas sobre Brasil e Portugal em um único local</h2>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+          <img src="{{ url_for('static', path='/img/logo_1.png') }}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+            <h2>Sobre o projeto</h2>
+        </div>
+
+        <div class="row content">
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+                <p>Este projeto surgiu de uma necessidade pessoal - ao fazer pesquisas em Portugal, constatei que havia uma grande dificuldade de se encontrar nomes de localidades de forma precisa. Passei então a coletar informações, compilando arquivos e dados sobre as diversas reformas administrativas de lá - vale lembrar que Portugal é o país mais antigo da Europa!</p>
+                <p>Assim, pouco a pouco, tenho buscado organizar essas informações de maneira a possibilitar que elas sejam facilmente acessadas: e agora, surgiu a ideia de montar esta página. Espero que essas informações sejam úteis a todos os que desejam buscar informações sobre seus antepassados, ou para aqueles que pretendem fazer algum tipo de pesquisa histórica sobre Portugal e Brasil - também decidi incluir o Brasil nessa empreitada, visto que tampouco há informações totalmente concisas e precisas até mesmo no site do IBGE.</p>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                <p>Para todos os que desejem contribuir com informações para esse projeto - vale lembrar que eu estou arcando inteiramente com os custos dele, e que não tenho qualquer fim lucrativo com isso - fico à disposição.</p>
+                <p>Caso deseje entrar em contato comigo, clique no link 'Contato' na barra de navegação. Obrigado!</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="faq" class="faq">
+    <div class="container">
+
+    <div class="section-title" data-aos="fade-up">
+        <h2>Perguntas frequentes</h2>
     </div>
 
-    <div class="ui container">
-    <h1>Lusobrasilidades</h1>
-    <div class="ui divider"></div>
-    <p>Este projeto surgiu de uma necessidade pessoal - ao fazer pesquisas em Portugal, constatei que havia uma grande dificuldade de se encontrar nomes de localidades de forma precisa. Passei então a coletar informações, compilando arquivos e dados sobre as diversas reformas administrativas de lá - vale lembrar que Portugal é o país mais antigo da Europa!</p>
-    <p>Assim, pouco a pouco, tenho buscado organizar essas informações de maneira a possibilitar que elas sejam facilmente acessadas: e agora, surgiu a ideia de montar esta página. Espero que essas informações sejam úteis a todos os que desejam buscar informações sobre seus antepassados, ou para aqueles que pretendem fazer algum tipo de pesquisa histórica sobre Portugal e Brasil - também decidi incluir o Brasil nessa empreitada, visto que tampouco há informações totalmente concisas e precisas até mesmo no site do IBGE.</p>
-    <p>Para todos os que desejem contribuir com informações para esse projeto - vale lembrar que eu estou arcando inteiramente com os custos dele, e que não tenho qualquer fim lucrativo com isso - fico à disposição.</p>
-    <p>Caso deseje entrar em contato comigo, envie-me um e-mail para ricardo@iamprins.com. Obrigado!</p>
+    <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-5">
+        <i class="ri-question-line"></i>
+        <h4>De onde são extraídos os nomes de municípios do Brasil?</h4>
+        </div>
+        <div class="col-lg-7">
+        <p>
+            Os nomes de municípios usados nesse site foram extraídos do banco de dados do IBGE, e correspondem aos nomes atuais. Posteriormente serão inseridas informações históricas aqui, bem como subdivisões (distritos ou regiões administrativas, onde houver.)
+        </p>
+        </div>
     </div>
-    <div class="ui divider"></div>
+
+    <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-5">
+        <i class="ri-question-line"></i>
+        <h4>E em relação aos nomes de Portugal?</h4>
+        </div>
+        <div class="col-lg-7">
+        <p>
+            Todas as informações referentes a Portugal trazem os nomes conforme a Reforma Administrativa de 2011 (excluem-se dos nomes a expressão 'União das Freguesias de', por conveniência).
+        </p>
+        </div>
+    </div>
+
+    <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-lg-5">
+        <i class="ri-question-line"></i>
+        <h4>Onde encontro informações sobre os concelhos de Portugal?</h4>
+        </div>
+        <div class="col-lg-7">
+        <p>
+            O nome 'município' substitui os antigos 'concelhos'. 
+        </p>
+        </div>
+    </div>
+
+    <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+        <div class="col-lg-5">
+        <i class="ri-question-line"></i>
+        <h4>Também serão inseridas informações históricas de Portugal?</h4>
+        </div>
+        <div class="col-lg-7">
+        <p>
+            Como as mudanças de nomenclaturas das localidades em Portugal são muito mais numerosas, estou ainda tentando encontrar a melhor maneira de disponibilizar tais informações aqui. Entre em contato comigo caso deseje obter informação sobre algum local cujo nome não pode ser encontrado aqui.
+        </p>
+        </div>
+    </div>
+
+    <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="500">
+        <div class="col-lg-5">
+        <i class="ri-question-line"></i>
+        <h4>Quanto você cobra para fazer minha pesquisa genealógica?</h4>
+        </div>
+        <div class="col-lg-7">
+        <p>
+            Não faço pesquisas para outras pessoas. Caso tenha interesse, posso indicar pessoas de confiança que oferecem esse serviço. Adverto que há muita gente por aí cobrando por isso sem que possua a capacidade ou a competência para fazê-lo. Muito cuidado!
+        </p>
+        </div>
+    </div>
+
+    </div>
+</section>
+
 {% endblock %}
