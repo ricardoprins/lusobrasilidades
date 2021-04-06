@@ -1,8 +1,5 @@
 __pycache__/
 .vscode/
-db/__pycache__/
-db/config.py
 env/
 brasil.csv
 portugal.csv
-templates/index.html
