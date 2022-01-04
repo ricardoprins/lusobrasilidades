@@ -3,3 +3,5 @@ __pycache__/
 env/
 brasil.csv
 portugal.csv
+node_modules/
+.env
